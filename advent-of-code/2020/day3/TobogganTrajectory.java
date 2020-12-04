@@ -1,5 +1,8 @@
+package toboggantrajectory;
+
 import java.util.*;
 import java.io.*;
+
 /**
  * TobogganTrajectory
  */
@@ -29,7 +32,7 @@ public class TobogganTrajectory {
       TobogganTrajectory x = new TobogganTrajectory();
 
       try {
-        File myObject = new File("/Users/amitkarunakaran/Desktop/CodeSomeStuff/Advent-of-Code/advent-of-code/2020/day3/input.txt");
+        File myObject = new File("advent-of-code/2020/day3/input.txt");
         Scanner myReader = new Scanner(myObject);
 
         List<char[]> input = new ArrayList<>();
