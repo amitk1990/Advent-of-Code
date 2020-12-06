@@ -35,7 +35,7 @@ public class CustomCustoms {
     return total;
   }
 
-  public int commonQuestionsAnsweredByEntireTheGroup(List<String> questions) {
+  public int commonQuestionsAnsweredByEntireGroup(List<String> questions) {
     int result = 0;
     int[] map = new int[26];
     int size = questions.size();
@@ -61,7 +61,7 @@ public class CustomCustoms {
     int total = 0;
     for (int i = 0; i < list.size(); i++) {
       List<String> questions= list.get(i);
-      total += commonQuestionsAnsweredByEntireTheGroup(questions);
+      total += commonQuestionsAnsweredByEntireGroup(questions);
     }
 
     return total;
