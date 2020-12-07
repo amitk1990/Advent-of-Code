@@ -43,7 +43,6 @@ public class HandyHaversacks {
         for (String next : nextBags) {
           if (!visited.contains(next)) {
             visited.add(next);
-            // System.out.println("FROM " + currentTerm + " TO " + next);
             q.offer(next);
           }
         }
@@ -58,7 +57,6 @@ public class HandyHaversacks {
     // light red bags contain 1 bright white bag, 2 muted yellow bags.
     Map<String, Set<String>> lookup = new HashMap<>();
     for (String rule: input) {
-      // System.out.println("RULE " + rule);
       String[] bagRule = rule.split(" contain ");
       String containerbag = bagRule[0].replaceAll("(bags|bag)", "").trim();
 
@@ -131,7 +129,6 @@ public class HandyHaversacks {
   public int totalBags(List<String> input, String searchTerm) {
     Map<String, List<Bag>> lookup = new HashMap<>();
     for (String rule: input) {
-      // System.out.println("RULE " + rule);
       String[] bagRule = rule.split(" contain ");
       String containerbag = bagRule[0].replaceAll("(bags|bag)", "").trim();
       // parser
