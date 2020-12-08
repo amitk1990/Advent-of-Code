@@ -61,7 +61,7 @@ public class HandheldHalting {
     return result;
 }
 
-  public Output fixInstructionsAndReturnAccumulator(List<String> input, Set<Integer> jmpNopInstructionIndices) {
+  public Output fixInstructions(List<String> input, Set<Integer> jmpNopInstructionIndices) {
     for (int index : jmpNopInstructionIndices) {
         List<String> instructions = new ArrayList<>(input);
         String instruction = instructions.get(index);
@@ -104,7 +104,7 @@ public class HandheldHalting {
         Output object = test.new Output(0, false);
 
         Output result1 = test.isConsoleFixed(input, object);
-        Output result2 = test.fixInstructionsAndReturnAccumulator(input, jmpNopInstructionIndices);
+        Output result2 = test.fixInstructions(input, jmpNopInstructionIndices);
         System.out.println("Part 1 " + result1.accumulator);
         System.out.println("Part 2 " + result2.accumulator);
 
