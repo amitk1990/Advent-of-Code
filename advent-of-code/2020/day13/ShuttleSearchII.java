@@ -84,9 +84,14 @@ public class ShuttleSearchII {
     for (int i = 1; i < schedules.length; i++) {
       if (!schedules[i].equals("x")) {
         Long nextTime = Long.parseLong(schedules[i]);
+        System.out.println(schedules[i]);
+        System.out.println(firstBusTime);
         while (true) {
           time += firstBusTime;
           if ((time+i)%nextTime  == 0) {
+            System.out.println("first bus time" + firstBusTime);
+            System.out.println("first bus time" + nextTime);
+            System.out.println("TIME" + time);
             firstBusTime *= nextTime;
             break;
           }
@@ -99,7 +104,7 @@ public class ShuttleSearchII {
   public static void main(String[] args) {
     ShuttleSearchII SS = new ShuttleSearchII();
     try {
-      File myObject = new File("advent-of-code/2020/day13/input.txt");
+      File myObject = new File("advent-of-code/2020/day13/test2.txt");
       Scanner myReader = new Scanner(myObject);
 
       List<String> input = new ArrayList<>();
@@ -116,8 +121,8 @@ public class ShuttleSearchII {
       System.out.println("Part 2 " + result);
 
       // Takes a lot of time for input.txt
-      BigInteger timestampWithMatchingOffset = SS.matchingOffset(input);
-      System.out.println("Part 2 " + timestampWithMatchingOffset);
+      // BigInteger timestampWithMatchingOffset = SS.matchingOffset(input);
+      // System.out.println("Part 2 " + timestampWithMatchingOffset);
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
