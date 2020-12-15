@@ -89,9 +89,6 @@ public class ShuttleSearchII {
         while (true) {
           time += firstBusTime;
           if ((time+i)%nextTime  == 0) {
-            System.out.println("first bus time" + firstBusTime);
-            System.out.println("first bus time" + nextTime);
-            System.out.println("TIME" + time);
             firstBusTime *= nextTime;
             break;
           }
