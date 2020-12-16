@@ -84,7 +84,7 @@ public class RambunctiousRecitation {
     // int[] input = new int[]{3, 1, 2};
     int[] input = new int[]{6,19,0,5,7,13,1};
     long result = rr.findNumber(input, 2020);
-    System.out.println("part 1 " + result);
+    System.out.println("part 1 " + result); // 468
 
     long result2 = rr.findNumber(input, 30000000);
     System.out.println("part 2 " + result2); // 1801753
