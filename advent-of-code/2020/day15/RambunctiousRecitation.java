@@ -14,7 +14,7 @@ public class RambunctiousRecitation {
     // 6 -> 5 - 2 = 3
     // 7 -> 6 - 5 = 1
     // 8 -> 0
-    public void fixedAdd(List<Long> list, long val, int size) {
+    public void removeFirstElementFromListBasedOnSize(List<Long> list, long val, int size) {
         list.add(new Long(val));
         if(list.size() > size) list.remove(0);
     }
@@ -37,7 +37,7 @@ public class RambunctiousRecitation {
                         seen.put(new Long(0), new ArrayList<Long>());
                     }
                     List<Long> temp = seen.get(new Long(0));
-                    fixedAdd(temp, k, 2);
+                    removeFirstElementFromListBasedOnSize(temp, k, 2);
                     previous = 0;
                 } else {
                     List<Long> list = seen.get(previous);
@@ -49,16 +49,16 @@ public class RambunctiousRecitation {
                     List<Long> temp = new ArrayList<>();
                     if (seen.containsKey(result)) {
                         temp = seen.get(result);
-                        fixedAdd(temp, k, 2);
+                        removeFirstElementFromListBasedOnSize(temp, k, 2);
                     } else {
-                        fixedAdd(temp, k, 2);
+                        removeFirstElementFromListBasedOnSize(temp, k, 2);
                     }
                     seen.put(result, temp);
                     previous = result;
                 }
             } else {
                 List<Long> temp = new ArrayList<>();
-                fixedAdd(temp, k ,2);
+                removeFirstElementFromListBasedOnSize(temp, k ,2);
                 seen.put(previous, temp);
             }
             if (k == target) {
