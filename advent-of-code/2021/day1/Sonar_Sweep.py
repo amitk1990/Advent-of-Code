@@ -1,5 +1,5 @@
 import sys
-sys.path.append("advent-of-code/2021/util")
+sys.path.append("advent-of-code/2021/utils")
 
 from file_utils import read
 
