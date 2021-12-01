@@ -37,8 +37,9 @@ class FuelCalculator {
     
     public static void main(String[] args) {
         try {
+            System.out.println(new File(".").getAbsolutePath());
             FuelCalculator obj = new FuelCalculator();
-            File file = new File("./2019/day1/input.txt");
+            File file = new File("./advent-of-code/2019/day1/input.txt");
             Scanner myReader = new Scanner(file);
             List<Long> input = new ArrayList<Long>();
             while (myReader.hasNextLine()) {

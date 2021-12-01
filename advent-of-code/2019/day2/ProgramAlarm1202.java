@@ -64,7 +64,7 @@ public class ProgramAlarm1202 {
     public static void main(String[] args) {
         try {
             ProgramAlarm1202 obj = new ProgramAlarm1202();
-            File file = new File("./2019/day2/input.txt");
+            File file = new File("./advent-of-code/2019/day2/input.txt");
             Scanner myReader = new Scanner(file);
             List<Integer> input = new ArrayList<Integer>();
             while (myReader.hasNextLine()) {

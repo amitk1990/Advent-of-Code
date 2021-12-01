@@ -94,7 +94,7 @@ public class CrossedWires {
     public static void main(String[] args) {
         try {
             CrossedWires obj = new CrossedWires();
-            File file = new File("./2019/day3/input.txt");
+            File file = new File("./advent-of-code/2019/day3/input.txt");
             Scanner myReader = new Scanner(file);
             List<List<String>> input = new ArrayList<>();
 
