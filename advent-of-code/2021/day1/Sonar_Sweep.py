@@ -1,3 +1,8 @@
+import sys
+sys.path.append("advent-of-code/2021/util")
+
+from file_utils import read
+
 def calculate_depth_measurement_increase(nums):
   count = 0
   for i in range(1, len(nums)):
@@ -22,8 +27,7 @@ def calculate_three_measure_sliding_window(nums):
   
 if __name__ == '__main__':
   input = []
-  with open('./advent-of-code/2021/day1/input.txt') as day1:
-    input = day1.read().split('\n')
+  input = read('./advent-of-code/2021/day1/input.txt')
   input_nums = [int(x) for x in input]
   # part 1
   print(f"part 1 - {calculate_depth_measurement_increase(input_nums)}") # 1527
