@@ -27,7 +27,7 @@ def dive_with_aim(nums):
     else:
       aim += dict[direction]*value
       
-  return horizontal_position*depth
+  return dive(nums), horizontal_position*depth
 
 if __name__ == '__main__':
   input = read_lines("advent-of-code/2021/day2/input.txt")
@@ -36,10 +36,8 @@ if __name__ == '__main__':
   for item in input:
     temp = item.rstrip().split(" ")
     result.append((temp[0], int(temp[1])))
-  
-  res = dive(result)
-  print(f"part 1 {res}") # 1989014
+
   res = dive_with_aim(result)
-  print(f"part 2 {res}") # 2006917119
+  print(f"part 1 & part 2 {res}") # 1989014 & 2006917119
   
     
