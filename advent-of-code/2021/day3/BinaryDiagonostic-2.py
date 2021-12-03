@@ -3,8 +3,8 @@ sys.path.append("advent-of-code/2021/utils")
 
 from file_utils import read_lines
 
+MOST_FREQUENT, LEAST_FREQUENT = "most_frequent", "least_frequent"
 # part 2
-reports = []
 def filter_bits(reports, bit, index):
   narrowed_bits = []
   for report in reports:
@@ -38,57 +38,36 @@ def find_least_frequent(dict):
   
   return least_frequent
 
-def determine_oxygen_rating(diagonostic_report):
-  reports = diagonostic_report
-  column_length = len(diagonostic_report[0])
-  oxygen_rating_result = []
+def determine_rating(input_bits, pattern_check):
+  bits, column_length = input_bits,  len(input_bits[0])
+  rating_result = []
   for column in range(0, column_length):
-      row_length = len(reports)
+      row_length = len(bits)
       if (row_length == 1):
-        return oxygen_rating_result
+        return rating_result
 
       index, dict = 0, {}
       while index < row_length:
-        item = reports[index][column]
-        dict[item] = dict.get(item, 0) + 1
-        index += 1
-      most_frequent = find_most_frequent(dict)
-      reports = filter_bits(reports, most_frequent, column)
-      # calculate reports length and shrink
-      row_length = len(reports)
-      oxygen_rating_result = reports
-  
-  return oxygen_rating_result
-
-def determine_co2_rating(diagonostic_report):
-  reports = diagonostic_report
-  column_length = len(diagonostic_report[0])
-  co2_rating_result = []
-  for column in range(0, column_length):
-      row_length = len(reports)
-      if (row_length == 1):
-        return co2_rating_result
-
-      index, dict = 0, {}
-      while index < row_length:
-        item = reports[index][column]
+        item = bits[index][column]
         dict[item] = dict.get(item, 0) + 1
         index += 1
 
-      least_frequent = find_least_frequent(dict)
-      reports = filter_bits(reports, least_frequent, column)
+      # check bits based on either most frequent or least frequent
+      if pattern_check == MOST_FREQUENT:
+        frequent = find_least_frequent(dict)
+      elif pattern_check == LEAST_FREQUENT:
+        frequent = find_most_frequent(dict)
+      bits = filter_bits(bits, frequent, column)
       
-      row_length = len(reports)
-      co2_rating_result = reports
+      row_length = len(bits)
+      rating_result = bits
       
-  return co2_rating_result
+  return rating_result
 
 def calculate_life_support_of_submarine(input):
-  oxygen = determine_oxygen_rating(input)
-  co2 = determine_co2_rating(input)
+  oxygen, co2 = determine_rating(input, MOST_FREQUENT), determine_rating(input, LEAST_FREQUENT)
   return int(oxygen[0], 2) * int(co2[0], 2)
 
 if __name__ == '__main__':
   input = read_lines("advent-of-code/2021/day3/input.txt")
-  life = calculate_life_support_of_submarine(input)
-  print(f"part 2 {life}") # 4267809
+  print(f"part 2 {calculate_life_support_of_submarine(input)}") # 4267809
