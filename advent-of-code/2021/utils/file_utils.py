@@ -14,7 +14,7 @@ def read_single_line(filename):
 def read_lines(filename):
   input = []
   with open(filename, 'r') as file:
-    input = file.readlines()
+    input = file.read().splitlines()
 
   return input
 
