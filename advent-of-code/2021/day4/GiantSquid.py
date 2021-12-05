@@ -22,22 +22,14 @@ def prepare_matrix_and_sequence(input):
       temp = []
     else:
       elements = matrix_input[item].strip().split(' ')
-      # filter falsey values ''
-      elements = list(filter(None, elements))
-      # convert to string
-      elements = convert_string_to_int_array(elements)
+      elements = list(filter(None, elements)) # filter falsey values ''
+      elements = convert_string_to_int_array(elements) # convert to string
       if len(elements) == 0:
         matrix_lookup[matrix_no] = temp 
         break
       temp.append(elements)
 
   return sequence, matrix_lookup
-
-def mark_item_on_matrix(matrix, sequence):
-  for row in matrix:
-    for column in matrix[row]:
-      if column == sequence:
-        matrix[row][column] = 'X'
 
 def is_bingo_check(matrix):
   count = 0
@@ -59,7 +51,7 @@ def is_bingo_check(matrix):
   
   return False
 
-def mart_item_checked(matrix, seq):
+def mark_item_checked(matrix, seq):
   for row in range(0, len(matrix)):
     for column in range(0, len(matrix[row])):
       if matrix[row][column] == seq:
@@ -72,7 +64,7 @@ def play_bingo(sequences, matrix_lookup, state):
   for seq in sequences:
     for key in matrix_lookup.keys():
       matrix = matrix_lookup.get(key)
-      mart_item_checked(matrix, seq)
+      mark_item_checked(matrix, seq)
       if is_bingo_check(matrix) and state == "QUIT":
         return key, seq
       elif is_bingo_check(matrix) and state == "CONTINUE":
@@ -80,20 +72,14 @@ def play_bingo(sequences, matrix_lookup, state):
         if len(boards_completed.keys()) == number_of_matrixes:
           return key, seq
 
-def calculate_final_score(bingo_matrix, seq):
-  result = 0
-  for list in bingo_matrix:
-    for item in list:
-      if item != 'X':
-        result += item
-
-  return result * seq
+def reduce_to_final_score(bingo_matrix):
+  return sum([item for list in bingo_matrix for item in list if item != 'X'])
 
 def execute(sequence, matrix_lookup, GAME_STATE):
   key, seq = play_bingo(sequence, matrix_lookup, GAME_STATE)
   bingo_matrix = matrix_lookup.get(key)
 
-  return calculate_final_score(bingo_matrix, seq)
+  return reduce_to_final_score(bingo_matrix) * seq
 
 if __name__ == '__main__':
     input = read("advent-of-code/2021/day4/input.txt")
