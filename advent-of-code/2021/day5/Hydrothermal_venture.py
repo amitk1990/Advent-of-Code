@@ -35,34 +35,6 @@ def decrement(start_x, end_x, start_y, state):
     dict[str] = dict.get(str, 0) + 1
     start_x -= 1
 
-def find_overlap_of_lines_without_diagonal(list):
-  for item in list:
-    x1, y1 = item[0]
-    x2, y2 = item[1]
-    # 8,1 -> 4, 2
-    if x1 != x2 and y1 != y2:
-      continue
-      # 0,9 -> 5,9
-    if x1 <= x2 and y1 == y2:
-      increment(x1, x2, y1, "y_same")
-      # 0,3 -> 0,6
-    elif y1 <= y2 and x1 == x2:
-      increment(y1, y2, x1, "x_same")
-    elif x1 > x2 and y1 == y2:
-      decrement(x1, x2, y1, "y_same")
-    else:
-      decrement(y1, y2, x1, "x_same")
-      
-  return calculate_total()
-
-def calculate_total():
-  result = 0
-  for value in dict.values():
-    if (value >= 2):
-      result += 1
-      
-  return result
-
 def increment_both(x1, x2, y1, y2):
   while (x1 <= x2 and y1 <= y2):
     str = f"{x1}#{y1}"
@@ -91,6 +63,34 @@ def alternate(x1, x2, y1, y2, state):
       dict[str] = dict.get(str, 0) + 1
       x1 -= 1
       y1 += 1
+
+def find_overlap_of_lines_without_diagonal(list):
+  for item in list:
+    x1, y1 = item[0]
+    x2, y2 = item[1]
+    # 8,1 -> 4, 2
+    if x1 != x2 and y1 != y2:
+      continue
+      # 0,9 -> 5,9
+    if x1 <= x2 and y1 == y2:
+      increment(x1, x2, y1, "y_same")
+      # 0,3 -> 0,6
+    elif y1 <= y2 and x1 == x2:
+      increment(y1, y2, x1, "x_same")
+    elif x1 > x2 and y1 == y2:
+      decrement(x1, x2, y1, "y_same")
+    else:
+      decrement(y1, y2, x1, "x_same")
+      
+  return calculate_total()
+
+def calculate_total():
+  result = 0
+  for value in dict.values():
+    if (value >= 2):
+      result += 1
+      
+  return result
 
 def find_overlap_of_lines_with_diagonals(list):
   for item in list:

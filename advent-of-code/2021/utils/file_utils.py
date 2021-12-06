@@ -11,6 +11,9 @@ def read_single_line(filename):
     input = file.readline().split(",")
   return input
 
+def read_single_line_of_numbers(filename):
+  return [int(item) for item in read_single_line(filename)]
+
 def read_lines(filename):
   input = []
   with open(filename, 'r') as file:
