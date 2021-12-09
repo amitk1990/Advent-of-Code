@@ -10,7 +10,6 @@ def find_unique_segments(input):
   count = 0
   for string in input:
     line_of_segments = string.split('|')[1].strip()
-    
     for segment in line_of_segments.split(' '):
       if len(segment) in [2, 3, 4, 7]:
         count += 1
@@ -81,7 +80,6 @@ def decode_numbers(dict):
       NUMBER_3 = input
       segments[NUMBER_3] = 3
       display_5.remove(input)
-
   # left over is 2
   NUMBER_2 = display_5[0]
   segments[NUMBER_2] = 2
@@ -107,8 +105,6 @@ def find_total_segment(input):
     sum += calculate_segment_pattern(signal_wires, segments)
   
   return sum
-    
-    
 
 if __name__ == '__main__':
   input = read_lines("advent-of-code/2021/day8/input.txt")
