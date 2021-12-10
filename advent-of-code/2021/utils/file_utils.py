@@ -5,6 +5,16 @@ def read(filename):
     
   return input
 
+def matrix_read(filename):
+  result = []
+  input = []
+  with open(filename, 'r') as file:
+    input = file.readlines()
+    for line in input:
+      line = line.strip()
+      result.append(list(map(int, list(line))))
+
+  return result
 def read_single_line(filename):
   input = []
   with open(filename, 'r') as file:
