@@ -66,8 +66,7 @@ def check_if_illegal(item, last_open_paren):
   return False
 
 def syntax_validator(stack, expected_peek, expected_closed_paren, item, result):
-  illegal = False
-  exit = False
+  illegal = exit = False
   if not stack:
       raise Exception("Invalid case")
   elif stack[-1] == expected_peek:
@@ -85,7 +84,6 @@ def syntax_score_calculator(lines):
 
   for line in lines:
     stack = []
-    illegal = exit = False
     for item in line:
       if item in open_paren:
         stack.append(item)
