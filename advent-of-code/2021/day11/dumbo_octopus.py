@@ -3,6 +3,7 @@ sys.path.append("advent-of-code/2021/utils")
 
 from file_utils import matrix_read
 
+# all directions including diagonals
 directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
 def apply_bfs(queue, input, flash, visited):
