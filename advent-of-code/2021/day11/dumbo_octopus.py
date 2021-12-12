@@ -3,16 +3,7 @@ sys.path.append("advent-of-code/2021/utils")
 
 from file_utils import matrix_read
 
-directions = [
-  (1, 0),
-  (-1, 0),
-  (0, 1), 
-  (0, -1),
-  (1, 1), 
-  (-1, -1),
-  (-1, 1), 
-  (1, -1),
-]
+directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
 def apply_bfs(queue, input, flash, visited):
   row, column =  len(input), len(input[0])
