@@ -60,12 +60,12 @@ def apply_bfs(input, x, y):
   def is_valid(x, y):
     return (x >= 0 and y >= 0 and x < row and y < column)
   
-  def is_safe(x, y):
+  def is_not_visited(x, y):
     return not visited[x][y]
 
   visited = [[False for j in range(0, column)] for i in range(0, row)]    
-  # 0, 0 and distance 0
   queue = []
+  # distance and (x,y) coordinates
   heapq.heappush(queue, (0, x, y))
   visited[x][y] = True
   small = float('inf')
@@ -82,7 +82,7 @@ def apply_bfs(input, x, y):
         newX = x + direction[0]
         newY = y + direction[1]
         # boundary check and not visited
-        if is_valid(newX, newY) and is_safe(newX, newY):
+        if is_valid(newX, newY) and is_not_visited(newX, newY):
           new_distance = distance + input[newX][newY]
           visited[newX][newY] = True
           heapq.heappush(queue, (new_distance, newX, newY))
