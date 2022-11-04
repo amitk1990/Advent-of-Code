@@ -27,7 +27,7 @@ def calculate_three_measure_sliding_window(nums):
   
 if __name__ == '__main__':
   input = []
-  input = read('./advent-of-code/2021/day1/input.txt')
+  input = read('./advent-of-code/2021/day01/input.txt')
   input_nums = [int(x) for x in input]
   # part 1
   print(f"part 1 - {calculate_depth_measurement_increase(input_nums)}") # 1527
