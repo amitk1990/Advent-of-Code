@@ -27,4 +27,4 @@ if __name__ == '__main__':
     print(f"part1 - {calculate_frequency(main_input)}"); # 486
 
     # part 2
-    print(f"part 2 - {duplicate_frequency(main_input)}")
+    print(f"part 2 - {duplicate_frequency(main_input)}") # 69285
