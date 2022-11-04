@@ -9,6 +9,7 @@ def sum(a, b):
 def calculate_frequency(input):
     return reduce(sum, input)
 
+
 def duplicate_frequency(input):
     memo = {0}
     current_freq = 0
