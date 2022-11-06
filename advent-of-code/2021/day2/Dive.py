@@ -30,7 +30,7 @@ def dive_with_aim(nums):
   return dive(nums), horizontal_position*depth
 
 if __name__ == '__main__':
-  input = read_lines("advent-of-code/2021/day2/input.txt")
+  input = read_lines("advent-of-code/2021/day02/input.txt")
 
   result = []
   for item in input:

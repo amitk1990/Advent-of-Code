@@ -6,15 +6,19 @@ claim_map = defaultdict(set)
 claims = set()
 
 # parse input
+
+
 def parser(item):
     raw_claim, character, config, raw_dimension = item.split(" ")
-    fabric_config = list(map(int, config[0:len(config) -1].split(",")))
+    fabric_config = list(map(int, config[0:len(config) - 1].split(",")))
     dimension = list(map(int, raw_dimension.split("x")))
     claim = raw_claim[1:]
 
     return claim, fabric_config, dimension
 
 # non overlapping claims
+
+
 def non_overlapping_claims():
     for values in claim_map.values():
         if len(values) > 1:
@@ -23,11 +27,14 @@ def non_overlapping_claims():
     return claims
 
 # overlapping part 1
+
+
 def overlapping_claims(result):
     for key, values in coordinates.items():
         if values > 1:
             result += 1
     return result
+
 
 def draw_claims(input_values):
     claim, fabric_config, dimension = input_values
@@ -43,7 +50,7 @@ def draw_claims(input_values):
             x, y = x_axis + i, y_axis + j
 
             # Hashmap ' ' to avoid collisions
-            key = str(x) + ' '+ str(y)
+            key = str(x) + ' ' + str(y)
             if key in coordinates.keys():
                 coordinates[key] = coordinates.get(key) + 1
                 temp = claim_map.get(key, [])
@@ -55,6 +62,7 @@ def draw_claims(input_values):
                 hashset.add(claim)
                 claim_map[key] = hashset
 
+
 def calculate_overlapping_claims(input):
     for item in input:
         parsed_input = parser(item)
@@ -64,7 +72,8 @@ def calculate_overlapping_claims(input):
     result = 0
     return overlapping_claims(result), non_overlapping_claims()
 
-if __name__ == '__main__' :
+
+if __name__ == '__main__':
     input_values = read_lines("./input/input.txt")
     print(f"part 1 & 2: {calculate_overlapping_claims(input_values)}")
     '''
