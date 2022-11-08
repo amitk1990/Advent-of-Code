@@ -35,7 +35,7 @@ class ReposeRecord:
         self.time_tracker[self.guard_no] = time_chart
 
     def sleep_counter(self , time , timer_start):
-        if timer_start:
+        if timer_start == "start":
             self.start_time = time
         else:
             self.sleep_table.get(self.guard_no)
@@ -77,9 +77,9 @@ class ReposeRecord:
             guard_no = guard_instructions[1][1:]
             self.register_guard_duty(guard_no)
         elif "falls asleep" in instruction:
-            self.sleep_counter(time, True)
+            self.sleep_counter(time, "start")
         elif "wakes up" in instruction:
-            self.sleep_counter(time, False)
+            self.sleep_counter(time, "stop")
 
 
     def deduce_most_slept_guard(self):
