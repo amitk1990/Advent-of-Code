@@ -5,7 +5,7 @@ coordinates = defaultdict(list)
 claim_map = defaultdict(set)
 claims = set()
 
-# parse input
+# parse inputs
 
 
 def parser(item):
