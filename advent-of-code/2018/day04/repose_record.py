@@ -14,6 +14,20 @@ class ReposeRecord:
     def convert_to_str_mins(diff):
         return int(diff.total_seconds() / 60)
 
+    def arrange_chronological_order(self, data):
+        time_calendar = []
+        time_instruction_map = defaultdict(list)
+        for item in data:
+            time, instruction = self.parse_input(item)
+            time_calendar.append(time)
+            time_instruction_map[time] = instruction
+
+        time_calendar.sort()
+
+        for time in time_calendar:
+            temp = time_instruction_map.get(time)
+            self.sorted_time_map[time] = temp
+
     def tracker(self, time_chart, end_time):
         start = self.start_time.minute
         end = end_time.minute
@@ -103,21 +117,6 @@ class ReposeRecord:
         most_min_slept = time.index(max(time))
 
         return int(guard) * int(most_min_slept)
-
-    def arrange_chronological_order(self, data):
-        time_calendar = []
-        time_instruction_map = defaultdict(list)
-        for item in data:
-            time, instruction = self.parse_input(item)
-            time_calendar.append(time)
-            time_instruction_map[time] = instruction
-
-        time_calendar.sort()
-
-        for time in time_calendar:
-            temp = time_instruction_map.get(time)
-            self.sorted_time_map[time] = temp
-
 
 if __name__ == '__main__':
     data = read_lines("./inputs/input.txt")
