@@ -20,13 +20,9 @@ class RuckSackOrganization:
         return self.calculate_score_index(defects)
 
     def part_2_execute(self, rucksacks):
-        result, temp, common = [], [], []
-        for i in range(0, len(rucksacks)):
-            if i !=0 and i % 3 == 0:
-                result.append(temp)
-                temp  = []
-            temp.append(rucksacks[i])
-        result.append(temp)
+        result, common = [], []
+        for i in range(0, len(rucksacks), 3):
+            result.append([rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]])
 
         for x, y, z  in result:
             common.append(set(x) & set(y) & set(z))
