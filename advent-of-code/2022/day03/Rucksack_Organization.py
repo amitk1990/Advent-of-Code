@@ -29,7 +29,6 @@ class RuckSackOrganization:
 
         return self.calculate_score_index(common)
 
-
 if __name__ == '__main__':
     rucksacks = read_lines("./data/input.txt")
     print(f"part 1 {RuckSackOrganization().part_1_execute(rucksacks)}") # 7878
