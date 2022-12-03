@@ -116,5 +116,5 @@ class RockPaperScissorGame:
 
 if __name__ == '__main__':
     data = read_lines("./data/input.txt")
-    print(f"part 1 {RockPaperScissorGame().part_1(data)}")
-    print(f"part 2 {RockPaperScissorGame().part_2(data)}")
+    print(f"part 1 {RockPaperScissorGame().part_1(data)}") # part 1 13682
+    print(f"part 2 {RockPaperScissorGame().part_2(data)}") # part 2 12881
