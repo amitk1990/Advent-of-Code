@@ -62,6 +62,13 @@ def read_with_directions(filename):
   return result
 
 
+def split_line_by_delimiter(filename, delimiter = "\n\n"):
+  input = []
+  with open(filename, 'r') as file:
+    result = file.read().split(delimiter)
+
+  return  result
+
 def group_by_limiter(filename):
   input = []
   with open(filename, 'r') as file:
