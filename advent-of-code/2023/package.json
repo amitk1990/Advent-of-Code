@@ -1,0 +1,16 @@
+{
+  "name": "aoc_2023",
+  "version": "1.0.0",
+  "description": "advent of code 2023",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./day01",
+    "lint:fix": "eslint ./day01 --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.54.0",
+    "lodash": "^4.17.21"
+  }
+}
