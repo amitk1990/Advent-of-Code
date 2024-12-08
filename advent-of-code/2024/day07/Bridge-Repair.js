@@ -19,7 +19,7 @@ class BridgeRepair {
     executePart(equations, part) {
         const transformedEquations = this.transformInputs(equations);
 
-        const customEvaluation = (temp) => {
+        const customEvaluationLeftToRight = (temp) => {
             const customExpr = temp.split(/(\+|\|\||\*)/);
             let result = parseInt(customExpr[0], 10);
 
@@ -42,7 +42,7 @@ class BridgeRepair {
         }
 
         const operatorsToPermutate = this.pickOperators(part);
-        console.log(operatorsToPermutate);
+
         let totalCalibrationResult = 0;
         for (const equation of transformedEquations) {
             const [expectation, operands] = equation;
@@ -51,7 +51,7 @@ class BridgeRepair {
             const permutate = (index, temp) => {
                 if (index === operands.length - 1) {
                     // evaluation
-                    let tempCalibration = customEvaluation(temp)
+                    let tempCalibration = customEvaluationLeftToRight(temp)
                     if (tempCalibration === expectation && !map.has(tempCalibration)) {
                         map.set(expectation, tempCalibration);
                         totalCalibrationResult += tempCalibration;
