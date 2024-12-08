@@ -1,5 +1,4 @@
 const fs = require("fs");
-const {map} = require("lodash");
 
 class BridgeRepair {
     operators = ['+', '*'];
@@ -13,42 +12,11 @@ class BridgeRepair {
         });
     }
 
-    executePart1(equations) {
-        const transformedEquations = this.transformInputs(equations);
-
-
-        let total = 0;
-        for (const equation of transformedEquations) {
-            const [expectation, operands] = equation;
-
-            const map = new Map();
-
-            const permutate = (index, temp) => {
-                if (index === operands.length - 1) {
-                    // calculate the result
-                    let tempResult = eval(temp);
-                    if (tempResult === expectation && !map.has(tempResult)) {
-                        map.set(expectation, temp);
-                        total += tempResult;
-                        return;
-                    }
-                    return;
-                }
-
-                for (let operator of this.operators) {
-                    const expression = `(${temp}${operator}${operands[index + 1]})`;
-                    permutate(index + 1, expression);
-                }
-            }
-
-
-            permutate(0, `(${String(operands[0])})`);
-        }
-
-        return total;
+    pickOperators(part) {
+        return part === '1' ? this.operators : this.includeHiddenOperators;
     }
 
-    executePart2(equations) {
+    executePart(equations, part) {
         const transformedEquations = this.transformInputs(equations);
 
         const customEvaluation = (temp) => {
@@ -73,6 +41,8 @@ class BridgeRepair {
             return result;
         }
 
+        const operatorsToPermutate = this.pickOperators(part);
+        console.log(operatorsToPermutate);
         let totalCalibrationResult = 0;
         for (const equation of transformedEquations) {
             const [expectation, operands] = equation;
@@ -89,7 +59,7 @@ class BridgeRepair {
                     return;
                 }
 
-                for (let operator of this.includeHiddenOperators) {
+                for (let operator of operatorsToPermutate) {
                     const expression = `${temp}${operator}${operands[index + 1]}`;
                     permutate(index + 1, expression);
                 }
@@ -105,6 +75,6 @@ class BridgeRepair {
 (function () {
     const equations = fs.readFileSync("./data/input.txt", "utf-8").split(/\r?\n/);
 
-    console.log(`part 1 ${new BridgeRepair().executePart1(equations)}`); // 1545311493300
-    console.log(`part 2 ${new BridgeRepair().executePart2(equations)}`); // 169122112716571
+    console.log(`part 1 ${new BridgeRepair().executePart(equations, '1')}`); // part 1 - 1545311493300
+    console.log(`part 2 ${new BridgeRepair().executePart(equations, '2')}`); // part 2 - 169122112716571
 })();
